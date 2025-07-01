@@ -19,6 +19,47 @@ Built with n8n automation platform integrating:
 - **Perplexity AI**: Real-time credit card search
 - **Supabase**: Conversation history storage
 
+```mermaid
+graph TD
+    A["👤 LINE 用戶<br/>User"] -->|"發送訊息<br/>Send Message"| B["📱 LINE Bot<br/>Webhook"]
+    
+    B --> C["🤖 n8n 工作流程<br/>n8n Workflow"]
+    
+    C --> D["🌍 區域偵測<br/>Region Detection<br/>台灣/馬來西亞/新加坡/美國/香港"]
+    
+    C --> E["📚 對話記錄<br/>Chat History<br/>Supabase"]
+    
+    D --> F["🔍 即時搜尋<br/>Perplexity AI<br/>Credit Card Info"]
+    E --> F
+    
+    F --> G["🧠 智能回應<br/>AI Response<br/>Generation"]
+    
+    G --> H["💾 儲存對話<br/>Save to<br/>Supabase"]
+    
+    H --> I["📤 回覆用戶<br/>Reply via<br/>LINE Bot"]
+    
+    I --> A
+    
+    subgraph "外部服務 External Services"
+        J["🌐 Perplexity AI"]
+        K["🗄️ Supabase Database"]  
+        L["📱 LINE Messaging API"]
+    end
+    
+    F -.-> J
+    E -.-> K
+    H -.-> K
+    B -.-> L
+    I -.-> L
+    
+    style A fill:#e3f2fd
+    style C fill:#fff3e0
+    style G fill:#e8f5e8
+    style J fill:#f3e5f5
+    style K fill:#fff8e1
+    style L fill:#fce4ec
+```
+
 ## 🤖 Supported Conversation Types
 
 ### Greetings
