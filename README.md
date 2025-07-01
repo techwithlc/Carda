@@ -12,43 +12,12 @@ An intelligent LINE chatbot that provides personalized credit card recommendatio
 - **Smart Region Detection**: Automatically detects user region from message content
 - **Loading Indicators**: Shows typing indicators during processing
 
-## 🏗️ Architecture
+## 🏗️ System Architecture
 
-The system is built using n8n automation platform with the following components:
-
-### Core Services
-- **LINE Bot**: Receives and sends messages
-- **Perplexity AI**: Provides real-time credit card search capabilities
-- **Supabase**: Database for conversation history and user data
-- **n8n**: Workflow automation platform
-
-### Key Features
-- Region-specific credit card recommendations
-- Intelligent response handling for greetings, questions, and comparisons
-- Conversation context awareness
-- Error handling and fallback responses
-
-## 🔧 Setup
-
-### Environment Variables
-```env
-LINE_CHANNEL_ACCESS_TOKEN=your_line_channel_access_token
-GEMINI_API_KEY=your_gemini_api_key
-SUPABASE_URL=your_supabase_url
-SUPABASE_API_KEY=your_supabase_api_key
-```
-
-### Supabase Database Schema
-```sql
-CREATE TABLE conversations (
-  id SERIAL PRIMARY KEY,
-  user_id TEXT NOT NULL,
-  session_id TEXT NOT NULL,
-  user_message TEXT NOT NULL,
-  assistant_message TEXT NOT NULL,
-  timestamp TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
-```
+Built with n8n automation platform integrating:
+- **LINE Bot API**: User messaging interface  
+- **Perplexity AI**: Real-time credit card search
+- **Supabase**: Conversation history storage
 
 ## 🤖 Supported Conversation Types
 
@@ -70,25 +39,14 @@ The system automatically detects user region based on keywords:
 - **USA**: "美國", "Chase", "Citi", "American Express"
 - **Hong Kong**: "香港", "恒生", "HSBC"
 
-## 📊 Workflow Components
+## 📊 How It Works
 
-1. **LINE Webhook**: Receives incoming messages
-2. **Environment Setup**: Validates required API keys
-3. **User Info Extraction**: Parses LINE webhook data
-4. **Region Detection**: Identifies user's geographic region
-5. **Chat History Retrieval**: Fetches recent conversation context
-6. **Perplexity Search**: Queries for credit card information
-7. **Response Generation**: Creates intelligent, context-aware responses
-8. **Database Logging**: Saves conversation to Supabase
-9. **LINE Response**: Sends formatted message back to user
-
-## 🚀 Deployment
-
-1. Import the n8n workflow from `cardsavepropropro.json`
-2. Configure environment variables in n8n
-3. Set up LINE Bot webhook endpoint
-4. Configure Supabase database
-5. Activate the workflow
+1. User sends message via LINE
+2. System detects user's region automatically  
+3. Retrieves conversation history for context
+4. Searches for real-time credit card information
+5. Generates intelligent, personalized response
+6. Saves conversation and sends reply back to user
 
 ## 📱 How to Use
 
@@ -106,26 +64,17 @@ Add the bot on LINE: **@952ohxih**
 **User**: "我是馬來西亞人，推薦信用卡"
 **Bot**: *Automatically detects Malaysia region and provides local credit card recommendations*
 
-## 🔍 Technical Details
+## 🐛 回報問題 / Report Issues
 
-- **Response Time**: ~3-5 seconds (includes search and processing)
-- **Message Length**: Limited to 1000 characters for optimal performance
-- **Chat History**: Stores last 5 conversations per user
-- **Error Handling**: Graceful fallbacks with user-friendly error messages
-- **Rate Limiting**: Built-in protections against API abuse
+如果您在使用過程中遇到任何問題，歡迎在此 GitHub Repository 建立 Issue 回報！
 
-## 🛠️ Troubleshooting
+If you encounter any issues while using the bot, please create an Issue in this GitHub Repository!
 
-### Common Issues
-1. **No Response**: Check environment variables and API keys
-2. **Search Errors**: Verify Perplexity AI API connectivity
-3. **Database Issues**: Confirm Supabase configuration and permissions
-4. **LINE Integration**: Validate webhook URL and channel access token
+- 🔗 回報問題 / Report Issue: [Create New Issue](https://github.com/lawrencechen0921/Carda/issues/new)
+- 📧 聯絡 / Contact: 透過 LINE Bot @952ohxih
 
-## 📄 License
+## 🤝 意見回饋 / Feedback
 
-This project is licensed under the MIT License.
+我們歡迎任何改善建議！請透過 GitHub Issues 分享您的想法。
 
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit pull requests or open issues for improvements.
+We welcome any suggestions for improvement! Please share your ideas via GitHub Issues.
