@@ -11,6 +11,12 @@ An intelligent LINE chatbot that provides personalized credit card recommendatio
 - **Conversation History**: Persistent chat history with Supabase
 - **Smart Region Detection**: Automatically detects user region from message content
 - **Loading Indicators**: Shows typing indicators during processing
+- **Enhanced Response Quality**: Advanced generic response detection and specific card recommendations
+- **Store-Specific Matching**: Precise recommendations for 7-11, 家樂福, momo, PChome and other merchants
+- **Fallback Recommendation Engine**: Intelligent fallback system that generates specific card recommendations when AI responses are generic
+- **Adaptive User Experience**: Different response styles for beginner vs expert users
+- **Enhanced Card Database**: Comprehensive card information with specific store cashback rates and promotional offers
+- **Smart Card Matching**: Multi-tier matching algorithm that considers store preferences, spending categories, and user demographics
 
 ## 🏗️ System Architecture
 
@@ -85,9 +91,39 @@ The system automatically detects user region based on keywords:
 1. User sends message via LINE
 2. System detects user's region automatically  
 3. Retrieves conversation history for context
-4. Searches for real-time credit card information
-5. Generates intelligent, personalized response
-6. Saves conversation and sends reply back to user
+4. **Advanced Intent Detection**: Analyzes user message patterns and complexity
+5. **Smart Card Matching**: Uses multi-tier algorithm to find best matching cards
+6. Searches for real-time credit card information via Perplexity AI
+7. **Fallback Recommendation**: Generates specific recommendations if AI response is generic
+8. **Adaptive Response**: Tailors response style based on user experience level
+9. Saves conversation and sends personalized reply back to user
+
+## 🔧 Recent Improvements
+
+### Enhanced Generic Response Detection (Task 1)
+- **Aggressive Pattern Matching**: Detects and prevents generic responses like "可以考慮以下幾張", "表現突出的選擇"
+- **Quality Assurance**: Ensures all responses contain specific card recommendations with concrete benefits
+- **Response Validation**: Multi-layer validation to catch vague language patterns
+
+### Enhanced Card Database (Task 2)  
+- **Comprehensive Card Data**: Detailed information for Taiwan's major credit cards
+- **Store-Specific Rates**: Precise cashback rates for 7-11, 家樂福, momo, PChome, 全聯, 好市多
+- **Promotional Offers**: Real-time promotional campaigns and limited-time offers
+- **Application Requirements**: Detailed eligibility criteria and income requirements
+
+### Enhanced Card Matching Algorithm (Task 3)
+- **Weighted Scoring System**: Prioritizes exact store matches, then categories, then general features
+- **Multi-Tier Logic**: Store-specific → Category-based → Target audience → Fallback strategies
+- **Smart Aliases**: Recognizes alternative names and synonyms for stores and categories
+- **Contextual Understanding**: Considers user demographics and spending patterns
+
+### Fallback Recommendation Generator (Task 4)
+- **Experience Level Detection**: Automatically identifies beginner vs expert users
+- **Adaptive Response Styles**: 
+  - **Beginner**: Simple format with educational explanations
+  - **Expert**: Detailed analysis with comprehensive technical information
+- **Intelligent Card Selection**: Multi-priority matching with robust fallback logic
+- **Targeted Explanations**: Generates explanations specifically matched to user requirements
 
 ## 📱 How to Use
 
